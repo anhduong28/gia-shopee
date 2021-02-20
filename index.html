@@ -5,6 +5,7 @@
 <title>Get the Value of Text Input Field in JavaScript</title>
 </head>
 <body>
+    <h1>Tính giá sản phẩm shopee</h1>
     <label for="lname">Thực nhận:</label>
   <input type="text" id="thucNhan" name="thucNhan"><br><br>
   <label for="lname">Phụ phí freeship extra:</label>
@@ -21,17 +22,10 @@
           var x = document.getElementById("thucNhan").value; 
           var y = document.getElementById("giamGiaShoppe").value;  
           var z = document.getElementById("phuPhiFreeship").value;
-          var a = document.getElementById("phuPhiDichVu").value; 
-          console.log(x);
-          console.log(y);
-          console.log(z);
-          console.log(a);
-          var tmp = x/(1-(z/100));
-           console.log(tmp);
-          tmp = tmp/(1-(a/100));
-           console.log(tmp);
-          var result = (tmp/(1-(y/100))).toFixed(0);
-           
+          var a = document.getElementById("phuPhiDichVu").value;         
+          var tmp = x/(1-(z/100));          
+          tmp = tmp/(1-(a/100));           
+          var result = (tmp/(1-(y/100))).toFixed(0);           
           document.getElementById("ketQua").innerHTML = "Kết quả là : " + result;
         }
     </script>
