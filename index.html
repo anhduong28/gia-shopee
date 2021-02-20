@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Get the Value of Text Input Field in JavaScript</title>
+</head>
+<body>
+    <label for="lname">Thực nhận:</label>
+  <input type="text" id="thucNhan" name="thucNhan" value = "89000"><br><br>
+  <label for="lname">Phụ phí freeship extra:</label>
+  <input type="text" id="phuPhiFreeship" name="phuPhiFreeship" value = "4"><br><br>
+  <label for="lname">Phụ phí dịch vụ:</label>
+  <input type="text" id="phuPhiDichVu" name="phuPhiDichVu" value = "2"><br><br>
+  <label for="lname">Giảm giá show trên shoppe:</label>
+  <input type="text" id="giamGiaShoppe" name="giamGiaShoppe" value = "10"><br><br>
+   
+    <button type="button" onclick="getInputValue();">Tính Toán</button>
+    
+    <script>
+        function getInputValue(){
+          var x = document.getElementById("thucNhan").value; 
+          var y = document.getElementById("giamGiaShoppe").value;  
+          var z = document.getElementById("phuPhiFreeship").value;
+          var a = document.getElementById("phuPhiDichVu").value; 
+          console.log(x);
+          console.log(y);
+          console.log(z);
+          console.log(a);
+          var tmp = x/(1-(z/100));
+           console.log(tmp);
+          tmp = tmp/(1-(a/100));
+           console.log(tmp);
+          var result = (tmp/(1-(y/100))).toFixed(0);
+           
+          document.getElementById("ketQua").innerHTML = "Kết quả là : " + result;
+        }
+    </script>
+  <p id ="ketQua">Kết quả là : </p>
+</body>
+</html>
