@@ -3,32 +3,66 @@
 <head>
 <meta charset="utf-8">
 <title>Tính giá sản phẩm Shopee</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Tính giá sản phẩm shopee</h1>
-    <label for="lname">Thực nhận:</label>
-  <input type="text" id="thucNhan" name="thucNhan"><br><br>
-    <label for="lname">Phụ phí freeship extra <span color = red>*</span>:</label>
-  <input type="text" id="phuPhiFreeship" name="phuPhiFreeship" value = "4"><br><br>
-  <label for="lname">Phụ phí dịch vụ<span color = red>*</span>:</label>
-  <input type="text" id="phuPhiDichVu" name="phuPhiDichVu" value = "2"><br><br>
-  <label for="lname">Giảm giá show trên Shoppe<span color = red>*</span>:</label>
-  <input type="text" id="giamGiaShoppe" name="giamGiaShoppe"><br><br>
-   <label for="lname"><span color = red>*</span> đơn vị %</label><br><br>
-    <button type="button" onclick="getInputValue();">Tính Toán</button>
-    
-    <script>
-        function getInputValue(){
-          var x = document.getElementById("thucNhan").value; 
-          var y = document.getElementById("giamGiaShoppe").value;  
-          var z = document.getElementById("phuPhiFreeship").value;
-          var a = document.getElementById("phuPhiDichVu").value;         
-          var tmp = x/(1-(z/100));          
-          tmp = tmp/(1-(a/100));           
-          var result = (tmp/(1-(y/100))).toFixed(0);           
-          document.getElementById("ketQua").innerHTML = "Kết quả là : " + result;
-        }
-    </script>
-  <p id ="ketQua">Kết quả là : </p>
+    <div class="container">
+        <center><h1>Tính giá sản phẩm shopee</h1></center>
+        <form>
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-3 col-form-label">Thực nhận</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="thucNhan" placeholder="Số tiền muốn nhận về">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">Phụ phí freeship extra <span style="color:red">*</span></label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="phuPhiFreeship" placeholder="Phụ phí Freeship Extra(đơn vị %)"  value = "4">
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Phụ phí dịch vụ <span style="color:red">*</span></label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="phuPhiDichVu" placeholder="Phụ phí dịch vụ(đơn vị %)" value = "2">
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Giảm giá trên Shoppe <span style="color:red">*</span></label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="giamGiaShoppe" placeholder="Giảm giá trên Shoppe(đơn vị %)" value = "30">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Thực nhận<span style="color:red">*</span></label>
+                <div class="col-sm-6">                  
+                  <p readonly class="form-control-plaintext" id="ketQua" value="0đ">
+                </div>
+            </div>
+              <div class="form-group row">
+                <button type="button" onclick="getInputValue();" class="btn btn-danger">Tính toán</button>
+              </div>
+          </form>
+        <script>
+            function getInputValue(){
+              var x = document.getElementById("thucNhan").value; 
+              var y = document.getElementById("giamGiaShoppe").value;  
+              var z = document.getElementById("phuPhiFreeship").value;
+              var a = document.getElementById("phuPhiDichVu").value;         
+              var tmp = x/(1-(z/100));          
+              tmp = tmp/(1-(a/100));           
+              var result = (tmp/(1-(y/100))).toFixed(0);           
+              document.getElementById("ketQua").innerHTML = new Intl.NumberFormat('vi-VN').format(result) + " VNĐ";
+            }
+        </script>
+    </div>
 </body>
 </html>
